@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246632150770",
+    "project_id": "final-gas-iot",
+    "storage_bucket": "final-gas-iot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246632150770:android:d0eb1f20ae0d371716426b",
+        "android_client_info": {
+          "package_name": "com.example.kiplih_jum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQsV4u4TK94WdIJ34D6Jw0CGfcn3n5ELE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
