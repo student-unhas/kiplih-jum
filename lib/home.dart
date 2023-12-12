@@ -75,16 +75,20 @@ class _HomeState extends State<Home> {
                             children: [
                               Cards(
                                 icon: FontAwesomeIcons.fire,
-                                on: sensorData.api == '1' ? true : false,
-                                status: "Fire Not Detected",
+                                on: value,
+                                status: sensorData.api == '1'
+                                    ? "Fire Not Detected"
+                                    : "Fire Detected",
                               ),
                               const SizedBox(
                                 width: 10,
                               ),
                               Cards(
                                 icon: FontAwesomeIcons.wind,
-                                on: sensorData.gas == '1' ? true : false,
-                                status: "Gas Not Detected",
+                                on: value,
+                                status: sensorData.api == '1'
+                                    ? "Gas Not Detected"
+                                    : "Gas Not Detected",
                               ),
                             ],
                           ));
