@@ -76,6 +76,7 @@ class _HomeState extends State<Home> {
                               Cards(
                                 icon: FontAwesomeIcons.fire,
                                 on: value,
+                                detect: sensorData.api == '1' ? true : false,
                                 status: sensorData.api == '1'
                                     ? "Fire Not Detected"
                                     : "Fire Detected",
@@ -86,7 +87,8 @@ class _HomeState extends State<Home> {
                               Cards(
                                 icon: FontAwesomeIcons.wind,
                                 on: value,
-                                status: sensorData.api == '1'
+                                detect: sensorData.gas == '1' ? true : false,
+                                status: sensorData.gas == '1'
                                     ? "Gas Not Detected"
                                     : "Gas Not Detected",
                               ),
@@ -162,10 +164,11 @@ class SensorData {
 }
 
 class Cards extends StatelessWidget {
-  final bool? on;
+  final bool? on, detect;
   final IconData? icon;
   final String? status;
-  const Cards({super.key, this.icon, this.on, this.status});
+  const Cards(
+      {super.key, this.icon, this.on, this.detect = false, this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +180,9 @@ class Cards extends StatelessWidget {
         decoration: BoxDecoration(
             color: on == true
                 ? Colors.black.withOpacity(.1)
-                : const Color(0xff0A0A0A),
+                : detect == true
+                    ? const Color(0xffe41a29)
+                    : const Color(0xff0A0A0A),
             borderRadius: BorderRadius.circular(20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
