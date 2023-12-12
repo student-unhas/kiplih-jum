@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "246632150770",
-    "project_id": "final-gas-iot",
-    "storage_bucket": "final-gas-iot.appspot.com"
+    "project_number": "942000905666",
+    "firebase_url": "https://iot-home-8735c-default-rtdb.firebaseio.com",
+    "project_id": "iot-home-8735c",
+    "storage_bucket": "iot-home-8735c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:246632150770:android:d0eb1f20ae0d371716426b",
+        "mobilesdk_app_id": "1:942000905666:android:157cd38c42e0733f430a5b",
         "android_client_info": {
           "package_name": "com.example.kiplih_jum"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAQsV4u4TK94WdIJ34D6Jw0CGfcn3n5ELE"
+          "current_key": "AIzaSyCXciZkw7d-KZ-3HUAES_OxRcgxcOSZQ2E"
         }
       ],
       "services": {

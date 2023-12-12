@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,7 +12,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool on = true;
+  final dbRef = FirebaseDatabase.instance.ref();
+  bool value = false;
+
+  onUpdate() {
+    setState(() {
+      value = !value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,36 +58,51 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                  flex: 2,
-                  child: Row(
-                    children: [
-                      Cards(
-                        icon: FontAwesomeIcons.fire,
-                        on: on,
-                        status: "Fire Not Detected",
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Cards(
-                        icon: FontAwesomeIcons.wind,
-                        on: on,
-                        status: "Gas Not Detected",
-                      ),
-                    ],
-                  )),
+              StreamBuilder(
+                  stream: dbRef.onValue,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        !snapshot.hasError &&
+                        snapshot.data?.snapshot.value != null) {
+                      final jsonString =
+                          jsonEncode(snapshot.data!.snapshot.value);
+
+                      var sensorData =
+                          SensorData.fromJson(jsonDecode(jsonString));
+                      return Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: [
+                              Cards(
+                                icon: FontAwesomeIcons.fire,
+                                on: sensorData.api == '1' ? true : false,
+                                status: "Fire Not Detected",
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Cards(
+                                icon: FontAwesomeIcons.wind,
+                                on: sensorData.gas == '1' ? true : false,
+                                status: "Gas Not Detected",
+                              ),
+                            ],
+                          ));
+                    }
+                    return const SizedBox(
+                      child: Text('Kososng'),
+                    );
+                  }),
               InkWell(
                 onTap: () {
-                  setState(() {
-                    on = !on;
-                  });
+                  onUpdate();
+                  writeData();
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 10),
                   height: 40,
                   decoration: BoxDecoration(
-                      color: on == true
+                      color: value
                           ? Colors.black.withOpacity(.1)
                           : const Color(0xff0A0A0A),
                       borderRadius: BorderRadius.circular(20)),
@@ -86,15 +112,15 @@ class _HomeState extends State<Home> {
                       Icon(
                         FontAwesomeIcons.powerOff,
                         size: 18,
-                        color: on == true ? Colors.black : Colors.white,
+                        color: value ? Colors.black : Colors.white,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       Text(
-                        on == true ? "Turn Off Sensor" : "Turn On Sensor",
+                        value ? "Turn Off Sensor" : "Turn On Sensor",
                         style: TextStyle(
-                            color: on == true ? Colors.black : Colors.white),
+                            color: value ? Colors.black : Colors.white),
                       )
                     ],
                   ),
@@ -105,6 +131,29 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  Future<void> writeData() async {
+    dbRef.child("state").set({"switch": value});
+  }
+}
+
+class SensorData {
+  final String api;
+  final String gas;
+
+  SensorData({required this.api, required this.gas});
+
+  factory SensorData.fromJson(Map<String, dynamic> json) {
+    return SensorData(
+      api: json['api'].toString(),
+      gas: json['gas'].toString(),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'SensorData{api: $api, gas: $gas}';
   }
 }
 

@@ -44,37 +44,41 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAPVmiDOSHx3vPmLqz1rQjkiZi5L0dtc2Q',
-    appId: '1:246632150770:web:92d1a726480ed2ed16426b',
-    messagingSenderId: '246632150770',
-    projectId: 'final-gas-iot',
-    authDomain: 'final-gas-iot.firebaseapp.com',
-    storageBucket: 'final-gas-iot.appspot.com',
+    apiKey: 'AIzaSyCKTSTbx4lm2z80Ss74QMsLtT_OGKp_Srg',
+    appId: '1:942000905666:web:2d2154eee7ffba16430a5b',
+    messagingSenderId: '942000905666',
+    projectId: 'iot-home-8735c',
+    authDomain: 'iot-home-8735c.firebaseapp.com',
+    databaseURL: 'https://iot-home-8735c-default-rtdb.firebaseio.com',
+    storageBucket: 'iot-home-8735c.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAQsV4u4TK94WdIJ34D6Jw0CGfcn3n5ELE',
-    appId: '1:246632150770:android:d0eb1f20ae0d371716426b',
-    messagingSenderId: '246632150770',
-    projectId: 'final-gas-iot',
-    storageBucket: 'final-gas-iot.appspot.com',
+    apiKey: 'AIzaSyCXciZkw7d-KZ-3HUAES_OxRcgxcOSZQ2E',
+    appId: '1:942000905666:android:157cd38c42e0733f430a5b',
+    messagingSenderId: '942000905666',
+    projectId: 'iot-home-8735c',
+    databaseURL: 'https://iot-home-8735c-default-rtdb.firebaseio.com',
+    storageBucket: 'iot-home-8735c.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA7c1NHMNTnGdNaAd94KmeB97f_TrZNcfc',
-    appId: '1:246632150770:ios:98c919718993883916426b',
-    messagingSenderId: '246632150770',
-    projectId: 'final-gas-iot',
-    storageBucket: 'final-gas-iot.appspot.com',
+    apiKey: 'AIzaSyB1VZ9TOhxwnZBfEEjoP63qc9YZj8ada8E',
+    appId: '1:942000905666:ios:037895586529381a430a5b',
+    messagingSenderId: '942000905666',
+    projectId: 'iot-home-8735c',
+    databaseURL: 'https://iot-home-8735c-default-rtdb.firebaseio.com',
+    storageBucket: 'iot-home-8735c.appspot.com',
     iosBundleId: 'com.example.kiplihJum',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA7c1NHMNTnGdNaAd94KmeB97f_TrZNcfc',
-    appId: '1:246632150770:ios:eb0186bbe5347bf716426b',
-    messagingSenderId: '246632150770',
-    projectId: 'final-gas-iot',
-    storageBucket: 'final-gas-iot.appspot.com',
+    apiKey: 'AIzaSyB1VZ9TOhxwnZBfEEjoP63qc9YZj8ada8E',
+    appId: '1:942000905666:ios:b9dc80e9c6e9ff9e430a5b',
+    messagingSenderId: '942000905666',
+    projectId: 'iot-home-8735c',
+    databaseURL: 'https://iot-home-8735c-default-rtdb.firebaseio.com',
+    storageBucket: 'iot-home-8735c.appspot.com',
     iosBundleId: 'com.example.kiplihJum.RunnerTests',
   );
 }
