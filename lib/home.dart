@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                               Cards(
                                 icon: FontAwesomeIcons.fire,
                                 on: value,
-                                detect: sensorData.api == '1' ? true : false,
+                                detect: sensorData.api == '0' ? true : false,
                                 status: sensorData.api == '1'
                                     ? "Fire Not Detected"
                                     : "Fire Detected",
@@ -87,10 +87,10 @@ class _HomeState extends State<Home> {
                               Cards(
                                 icon: FontAwesomeIcons.wind,
                                 on: value,
-                                detect: sensorData.gas == '1' ? true : false,
+                                detect: sensorData.gas == '0' ? true : false,
                                 status: sensorData.gas == '1'
                                     ? "Gas Not Detected"
-                                    : "Gas Not Detected",
+                                    : "Gas Detected",
                               ),
                             ],
                           ));
@@ -178,7 +178,7 @@ class Cards extends StatelessWidget {
         height: double.infinity,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: on == true
+            color: on == true && detect == false
                 ? Colors.black.withOpacity(.1)
                 : detect == true
                     ? const Color(0xffe41a29)
@@ -188,13 +188,22 @@ class Cards extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(icon,
-                size: 30, color: on == true ? Colors.black : Colors.white),
+                size: 30,
+                color: on == true
+                    ? Colors.black
+                    : detect == true
+                        ? Colors.white
+                        : Colors.white),
             const Spacer(),
             Text(
               status ?? "",
               style: TextStyle(
                   fontSize: 20,
-                  color: on == true ? Colors.black : Colors.white),
+                  color: on == true
+                      ? Colors.black
+                      : detect == true
+                          ? Colors.white
+                          : Colors.white),
             )
           ],
         ),
